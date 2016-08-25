@@ -16,7 +16,7 @@
 
 - Grab the .sh
 ```
-curl https://raw.githubusercontent.com/JamiePrentice/DostThouEvenHoist/benchmark.sh > benchmark.sh
+curl https://raw.githubusercontent.com/JamiePrentice/DostThouEvenHoist/master/benchmark.sh > benchmark.sh
 ```
 
 - Give the execute permissions
