@@ -4,7 +4,7 @@
 
 echo "Starting Benchmark Scripts"
 
-y | apt install sysbench & wait
+apt install sysbench & wait
 
 echo "\n ------ CPU ------" > results.txt
 sysbench --test=cpu run >> results.txt & wait
@@ -21,7 +21,7 @@ sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
 
 echo "\n ------ Apache -------" &>> results.txt
-y | apt install apache2-utils & wait
+apt install apache2-utils -y & wait
 ab -kc 1000 -n 10000 http://127.0.0.1/ & wait
 
 echo "\n ------ NETWORK ------" &>> results.txt
@@ -38,9 +38,9 @@ cd ../../
 
 echo "Uninstalling Packages"
 rm -R byte-unixbench
-y | apt remove sysbench & wait
-y | apt remove python-pip & wait
-y | apt clean & wait
-y | apt autoremove & wait
+apt remove sysbench -y & wait
+apt remove python-pip -y & wait
+apt clean -y & wait
+apt autoremove -y & wait
 
 echo "Done - Results in results.txt"
