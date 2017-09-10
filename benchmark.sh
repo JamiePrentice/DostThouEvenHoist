@@ -4,7 +4,7 @@
 
 echo "Starting Benchmark Scripts"
 
-apt install sysbench & wait
+apt install sysbench -y & wait
 
 echo "\n ------ CPU ------" > results.txt
 sysbench --test=cpu run >> results.txt & wait
@@ -28,13 +28,6 @@ echo "\n ------ NETWORK ------" &>> results.txt
 apt install python-pip & wait
 pip install speedtest-cli & wait
 speedtest-cli >> results.txt & wait
-
-echo "\n ------ UnixBench ------" >> results.txt
-git clone https://github.com/kdlucas/byte-unixbench.git & wait
-make -C byte-unixbench/UnixBench/ & wait
-cd byte-unixbench/UnixBench/
-./Run >> ../../results.txt & wait
-cd ../../
 
 echo "Uninstalling Packages"
 rm -R byte-unixbench
