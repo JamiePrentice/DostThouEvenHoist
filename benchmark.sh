@@ -30,7 +30,6 @@ pip install speedtest-cli & wait
 speedtest-cli >> results.txt & wait
 
 echo "Uninstalling Packages"
-rm -R byte-unixbench
 apt remove sysbench -y & wait
 apt remove python-pip -y & wait
 apt clean -y & wait
