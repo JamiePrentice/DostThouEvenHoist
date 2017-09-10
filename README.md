@@ -1,5 +1,5 @@
-# DostThouEvenHoist
-*A hacky work in progress benchmark script for Ubuntu*
+# LazyBench
+*A hacky benchmark script for Ubuntu*
 
 ---
 
