@@ -3,16 +3,18 @@
 
 ---
 
-####What doest t doth?
+### What does it do?
 
 - CPU benchmarks with Sysbench.
-- I/O benchmarks with Sysbench.
-- Network benchmarks with SpeedTest.
+- Memory read / write benchmarks with Sysbench.
+- Disk I/O benchmarks with Sysbench.
+- Apache benchmarks with apache2-utils.
+- Network benchmarks with SpeedTest-cli.
 - UnixBench benchmarks with... UnixBench...
 
 ---
 
-#####Getting up and running
+### Getting up and running
 
 - Grab the .sh
 ```
