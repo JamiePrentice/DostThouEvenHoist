@@ -1,9 +1,6 @@
 #!/bin/bash
 
 # Don't forget to "chmod +x benchmarks.sh" this file
-echo "Updating and Upgrading"
-y | apt update & wait
-y | apt upgrade & wait
 
 echo "Starting Benchmark Scripts"
 
