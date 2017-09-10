@@ -4,28 +4,24 @@
 
 echo "Starting Benchmark Scripts"
 
-apt install sysbench -y & wait
+apt -qq install sysbench -y & wait
 
-echo "\n ------ CPU ------" > results.txt
+echo "------ CPU ------" >> results.txt
 sysbench --test=cpu run >> results.txt & wait
 
-echo "\n ------ Memory Read ------" > results.txt
-sysbench --test=memory run & wait
+echo "------ Memory Read ------" >> results.txt
+sysbench --test=memory run >> results.txt & wait
 
-echo "\n ------ Memory Write ------" > results.txt
-sysbench --test=memory --memory-oper=write run & wait
+echo "------ Memory Write ------" >> results.txt
+sysbench --test=memory --memory-oper=write run >> results.txt & wait
 
-echo "\n ------ DISK IO ------" >> results.txt
+echo "------ DISK IO ------" >> results.txt
 sysbench --test=fileio prepare & wait
 sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
 
-echo "\n ------ Apache -------" &>> results.txt
-apt install apache2-utils -y & wait
-ab -kc 1000 -n 10000 http://127.0.0.1/ & wait
-
-echo "\n ------ NETWORK ------" &>> results.txt
-apt install python-pip & wait
+echo "------ NETWORK ------" >> results.txt
+apt install python-pip -y & wait
 pip install speedtest-cli & wait
 speedtest-cli >> results.txt & wait
 
