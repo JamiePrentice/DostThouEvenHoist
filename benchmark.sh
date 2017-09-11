@@ -1,12 +1,18 @@
 #!/bin/bash
 LazyBench='\n\033[1;33m[LazyBench]\033[0m -'
 
-# Don't forget to "chmod +x benchmarks.sh" this file
-
-printf "$LazyBench Starting Benchmark Scripts"
+printf "$LazyBench Installing dependencies"
 
 printf "$LazyBench Installing Sysbench..."
 apt install sysbench -y & wait
+printf "$LazyBench Installing Python..."
+apt install python-pip -y & wait
+printf "$LazyBench Installing SpeedTest-Cli..."
+pip install speedtest-cli & wait
+
+clear
+
+printf "$LazyBench Starting Benchmark Scripts"
 
 printf "$LazyBench Running CPU Benchmarks... \n"
 printf "\n----- CPU ------\n\n" >> results.txt
@@ -37,11 +43,6 @@ printf "\n----- DISK I/O ------\n\n" >> results.txt
 sysbench --test=fileio prepare & wait
 sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
-
-printf "$LazyBench Installing Python..."
-apt install python-pip -y & wait
-printf "$LazyBench Installing SpeedTest-Cli..."
-pip install speedtest-cli & wait
 
 printf "$LazyBench Running Network Benchmarks..."
 printf "----- NETWORK ------\n\n" >> results.txt
