@@ -45,6 +45,15 @@ pip install -qq speedtest-cli & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Running Network Benchmarks..."
 echo "\n----- NETWORK ------\n" >> results.txt
+echo "\n Network test 1: \n" >> results.txt
+speedtest-cli >> results.txt & wait
+echo "\n Network test 2: \n" >> results.txt
+speedtest-cli >> results.txt & wait
+echo "\n Network test 3: \n" >> results.txt
+speedtest-cli >> results.txt & wait
+echo "\n Network test 4: \n" >> results.txt
+speedtest-cli >> results.txt & wait
+echo "\n Network test 5: \n" >> results.txt
 speedtest-cli >> results.txt & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Uninstalling packages & clearing up"
