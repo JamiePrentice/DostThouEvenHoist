@@ -6,7 +6,7 @@ LazyBench='\n\033[1;33m[LazyBench]\033[0m -'
 printf "$LazyBench Starting Benchmark Scripts"
 
 printf "$LazyBench Installing Sysbench..."
-apt install sysbench -y >> blackhole.txt & wait
+apt install sysbench -y & wait
 
 printf "$LazyBench Running CPU Benchmarks..."
 printf "\n----- CPU ------\n\n" >> results.txt
@@ -39,9 +39,9 @@ sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
 
 printf "$LazyBench Installing Python..."
-apt install python-pip -y >> blackhole.txt & wait
+apt install python-pip -y & wait
 printf "$LazyBench Installing SpeedTest-Cli..."
-pip install speedtest-cli >> blackhole.txt & wait
+pip install speedtest-cli & wait
 
 printf "$LazyBench Running Network Benchmarks..."
 printf "----- NETWORK ------\n\n" >> results.txt
@@ -57,10 +57,10 @@ printf "Network test 5: \n\n" >> results.txt
 speedtest-cli >> results.txt & wait
 
 printf "$LazyBench Uninstalling packages & clearing up"
-apt remove sysbench -y >> blackhole.txt & wait
-apt remove python-pip -y >> blackhole.txt & wait
-apt clean -y >> blackhole.txt & wait
-apt autoremove -y >> blackhole.txt & wait
+apt remove sysbench -y & wait
+apt remove python-pip -y & wait
+apt clean -y & wait
+apt autoremove -y & wait
 rm blackhole.txt & wait
 
 printf "$LazyBench Done - Results in results.txt"
