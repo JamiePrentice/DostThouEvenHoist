@@ -9,31 +9,31 @@ printf "$LazyBench Installing Sysbench..."
 apt install sysbench -y >> blackhole.txt & wait
 
 printf "$LazyBench Running CPU Benchmarks..."
-printf "----- CPU ------\n\n" >> results.txt
+printf "\n----- CPU ------\n\n" >> results.txt
+cat /proc/cpuinfo | grep 'model name' 2>&1 | tee -a results.txt
+cat /proc/cpuinfo | grep 'cpu cores'  2>&1 | tee -a results.txt
+cat /proc/cpuinfo | grep 'cpu MHz' 2>&1 | tee -a results.txt
+cat /proc/cpuinfo | grep 'cache size' 2>&1 | tee -a results.txt
 sysbench --test=cpu run >> results.txt & wait
 
 printf "$LazyBench Memory Capacity:"
-lshw -short -C memory
-
-printf "----- Memory ------\n\n" >> results.txt
-lshw -short -C memory >> results.txt
+printf "\n----- Memory ------\n\n" >> results.txt
+lshw -short -C memory 2>&1 | tee -a results.txt
 
 printf "$LazyBench Running Memory Read Benchmarks... (This could take a while)"
-printf "----- Memory Read ------\n\n" >> results.txt
+printf "\n----- Memory Read ------\n\n" >> results.txt
 sysbench --test=memory run >> results.txt & wait
 
 printf "$LazyBench Running Memory Write Benchmarks... (This could also take a while)"
-printf "----- Memory Write ------\n\n" >> results.txt
+printf "\n----- Memory Write ------\n\n" >> results.txt
 sysbench --test=memory --memory-oper=write run >> results.txt & wait
 
 printf "$LazyBench Disk Capacity:"
-df -h
-
-printf "----- Disk Capacity ------\n\n" >> results.txt
-df -h >> results.txt & wait
+printf "\n----- Disk Capacity ------\n\n" >> results.txt
+df -h 2>&1 | tee -a results.txt & wait
 
 printf "$LazyBench Running Disk I/O Benchmarks..."
-printf "----- DISK I/O ------\n\n" >> results.txt
+printf "\n----- DISK I/O ------\n\n" >> results.txt
 sysbench --test=fileio prepare & wait
 sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
