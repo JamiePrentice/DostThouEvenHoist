@@ -8,7 +8,7 @@ CLEAR='\033[0m' # No Color
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Starting Benchmark Scripts"
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Installing Sysbench..."
 
-apt install -qq sysbench -y & wait
+apt install sysbench -y & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Running CPU Benchmarks..."
 echo "\n----- CPU ------\n" >> results.txt
@@ -40,8 +40,8 @@ sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Installing Python and Speedtest-CLI..."
-apt install -qq python-pip -y & wait
-pip install -qq speedtest-cli & wait
+apt install python-pip -y & wait
+pip install speedtest-cli & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Running Network Benchmarks..."
 echo "\n----- NETWORK ------\n" >> results.txt
@@ -57,8 +57,8 @@ echo "\n Network test 5: \n" >> results.txt
 speedtest-cli >> results.txt & wait
 
 echo -e "${YELLOW}[LazyBench]${CLEAR} - Uninstalling packages & clearing up"
-apt remove -qq sysbench -y & wait
-apt remove -qq python-pip -y & wait
+apt remove sysbench -y & wait
+apt remove python-pip -y & wait
 apt clean -y & wait
 apt autoremove -y & wait
 

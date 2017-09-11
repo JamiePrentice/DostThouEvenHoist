@@ -8,7 +8,6 @@
 - CPU benchmarks with Sysbench.
 - Memory read / write benchmarks with Sysbench.
 - Disk I/O benchmarks with Sysbench.
-- Apache benchmarks with apache2-utils.
 - Network benchmarks with SpeedTest-cli.
 
 ---
