@@ -20,7 +20,8 @@ cat /proc/cpuinfo | grep 'model name' 2>&1 | tee -a results.txt
 cat /proc/cpuinfo | grep 'cpu cores'  2>&1 | tee -a results.txt
 cat /proc/cpuinfo | grep 'cpu MHz' 2>&1 | tee -a results.txt
 cat /proc/cpuinfo | grep 'cache size' 2>&1 | tee -a results.txt
-sysbench --test=cpu run >> results.txt & wait
+sysbench --test=cpu --cpu-max-prime=25000 run >> results.txt & wait
+sysbench --test=cpu --cpu-max-prime=25000 run --num-threads=4 >> results.txt & wait
 
 printf "$LazyBench Memory Capacity: \n\n"
 printf "\n######## Memory ########\n\n" >> results.txt
@@ -28,7 +29,7 @@ lshw -short -C memory 2>&1 | tee -a results.txt
 
 printf "$LazyBench Running Memory Read Benchmarks... (This could take a while) \n"
 printf "\n######## Memory Read ########\n\n" >> results.txt
-sysbench --test=memory run >> results.txt & wait
+sysbench --test=memory --memory-oper=read run >> results.txt & wait
 
 printf "$LazyBench Running Memory Write Benchmarks... (This could also take a while) \n"
 printf "\n######## Memory Write ########\n\n" >> results.txt
