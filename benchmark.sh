@@ -5,10 +5,13 @@ printf "$LazyBench Installing dependencies"
 
 printf "$LazyBench Installing Sysbench..."
 apt install sysbench -y & wait
+printf "$LazyBench Installing lshw..."
+apt install lshw -y & wait
 printf "$LazyBench Installing Python..."
 apt install python-pip -y & wait
 printf "$LazyBench Installing SpeedTest-Cli..."
 pip install speedtest-cli & wait
+
 
 clear
 
