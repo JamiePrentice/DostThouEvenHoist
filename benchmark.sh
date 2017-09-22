@@ -49,7 +49,6 @@ sysbench --test=fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench --test=fileio cleanup & wait
 
 printf "$LazyBench Running Network Benchmarks...\n"
-
 printf "\n######## NETWORK ########\n\n" >> results.txt
 speedtest-cli >> results.txt & wait
 
