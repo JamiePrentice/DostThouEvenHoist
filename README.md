@@ -33,4 +33,4 @@ chmod +x benchmark.sh
 
 - Results output to results.txt
 
-(Y)
+:thumbsup:
