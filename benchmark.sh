@@ -45,7 +45,7 @@ df -h 2>&1 | tee -a results.txt & wait
 printf "$LazyBench Running Disk I/O Benchmarks..."
 printf "\n######## DISK I/O ########\n\n" >> results.txt
 sysbench fileio prepare & wait
-sysbench -fileio --file-test-mode=rndrw run >> results.txt & wait
+sysbench fileio --file-test-mode=rndrw run >> results.txt & wait
 sysbench fileio cleanup & wait
 
 printf "$LazyBench Running Network Benchmarks...\n"
