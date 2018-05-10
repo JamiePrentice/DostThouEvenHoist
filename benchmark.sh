@@ -4,13 +4,13 @@ LazyBench='\n\033[1;33m[LazyBench]\033[0m -'
 printf "$LazyBench Installing dependencies"
 
 printf "$LazyBench Installing Sysbench..."
-apt install sysbench -y & wait
+apt install sysbench -y > /dev/null & wait
 printf "$LazyBench Installing lshw..."
-apt install lshw -y & wait
+apt install lshw -y > /dev/null & wait
 printf "$LazyBench Installing Python..."
-apt install python-pip -y & wait
+apt install python-pip -y > /dev/null & wait
 printf "$LazyBench Installing SpeedTest-Cli..."
-pip install speedtest-cli & wait
+pip install speedtest-cli > /dev/null & wait
 
 
 clear
@@ -53,9 +53,9 @@ printf "\n######## NETWORK ########\n\n" >> results.txt
 speedtest-cli >> results.txt & wait
 
 printf "$LazyBench Uninstalling packages & clearing up \n\n"
-apt remove sysbench -y & wait
-apt remove python-pip -y & wait
-apt clean -y & wait
-apt autoremove -y & wait
+apt remove sysbench -y > /dev/null & wait
+apt remove python-pip -y > /dev/null & wait
+apt clean -y > /dev/null & wait
+apt autoremove -y > /dev/null & wait
 
 printf "$LazyBench Done - Results in results.txt \n"
