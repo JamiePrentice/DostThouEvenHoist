@@ -4,14 +4,13 @@ LazyBench='\n\033[1;33m[LazyBench]\033[0m -'
 printf "$LazyBench Installing dependencies"
 
 printf "$LazyBench Installing Sysbench..."
-apt install sysbench -y > /dev/null & wait
+apt-get install sysbench -y > /dev/null & wait
 printf "$LazyBench Installing lshw..."
-apt install lshw -y > /dev/null & wait
+apt-get install lshw -y > /dev/null & wait
 printf "$LazyBench Installing Python..."
-apt install python-pip -y > /dev/null & wait
+apt-get install python-pip -y > /dev/null & wait
 printf "$LazyBench Installing SpeedTest-Cli..."
 pip install speedtest-cli > /dev/null & wait
-
 
 clear
 
@@ -44,18 +43,18 @@ df -h 2>&1 | tee -a results.txt & wait
 
 printf "$LazyBench Running Disk I/O Benchmarks..."
 printf "\n######## DISK I/O ########\n\n" >> results.txt
-sysbench fileio prepare & wait
+sysbench fileio prepare > /dev/null & wait
 sysbench fileio --file-test-mode=rndrw run >> results.txt & wait
-sysbench fileio cleanup & wait
+sysbench fileio cleanup > /dev/null & wait
 
 printf "$LazyBench Running Network Benchmarks...\n"
 printf "\n######## NETWORK ########\n\n" >> results.txt
 speedtest-cli >> results.txt & wait
 
 printf "$LazyBench Uninstalling packages & clearing up \n\n"
-apt remove sysbench -y > /dev/null & wait
-apt remove python-pip -y > /dev/null & wait
-apt clean -y > /dev/null & wait
-apt autoremove -y > /dev/null & wait
+apt-get remove sysbench -y > /dev/null & wait
+apt-get remove python-pip -y > /dev/null & wait
+apt-get clean -y > /dev/null & wait
+apt-get autoremove -y > /dev/null & wait
 
 printf "$LazyBench Done - Results in results.txt \n"
